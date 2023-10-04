@@ -5,8 +5,8 @@ import (
 )
 
 type PlaceCreated struct {
-	ID   uuid.UUID
-	EIN  string
-	Name string
-	Code uuid.UUID
+	PlaceId uuid.UUID
+	EIN     string
+	Name    string
+	Code    uuid.UUID
 }
