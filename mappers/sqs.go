@@ -6,11 +6,11 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 )
 
-func MapList[T any](s []events.SQSMessage) ([]T, error) {
+func ToEventList[T any](s []events.SQSMessage) ([]T, error) {
 	list := make([]T, 0)
 
 	for _, msg := range s {
-		value, err := Map[T](msg)
+		value, err := ToEvent[T](msg)
 		if err != nil {
 			return nil, err
 		}
@@ -19,7 +19,7 @@ func MapList[T any](s []events.SQSMessage) ([]T, error) {
 	return list, nil
 }
 
-func Map[T any](s events.SQSMessage) (T, error) {
+func ToEvent[T any](s events.SQSMessage) (T, error) {
 
 	var message T
 
