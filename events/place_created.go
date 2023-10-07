@@ -8,5 +8,5 @@ type PlaceCreated struct {
 	PlaceId uuid.UUID `json:"placeId"`
 	EIN     string    `json:"ein"`
 	Name    string    `json:"name"`
-	Code    uuid.UUID `json:"code"`
+	Code    uuid.UUID `json:"code"` // code is used for signupcode in auth
 }
