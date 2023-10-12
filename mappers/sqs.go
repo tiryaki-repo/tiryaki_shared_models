@@ -2,6 +2,7 @@ package mapper
 
 import (
 	"encoding/json"
+	"log"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/tiryaki-repo/tiryaki_shared_models/services/validator"
@@ -26,8 +27,15 @@ func ToEvent[T any](s events.SQSMessage) (T, error) {
 	validator := validator.NewValidator()
 
 	var message T
+	var sqsBody SQSBody
 
-	if err := json.Unmarshal([]byte(s.Body), &message); err != nil {
+	if err := json.Unmarshal([]byte(s.Body), &sqsBody); err != nil {
+		return message, err
+	}
+
+	log.Printf("message body is :%s", sqsBody)
+
+	if err := json.Unmarshal([]byte(sqsBody.Message), &message); err != nil {
 		return message, err
 	}
 
