@@ -17,6 +17,7 @@ func ToEventList[T any](s []events.SQSMessage) ([]T, error) {
 		}
 		list = append(list, value)
 	}
+
 	return list, nil
 }
 
