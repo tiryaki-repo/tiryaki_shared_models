@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/tiryaki-repo/tiryaki_shared_models/services/validator"
 )
 
 func ToEventList[T any](s []events.SQSMessage) ([]T, error) {
@@ -21,12 +22,18 @@ func ToEventList[T any](s []events.SQSMessage) ([]T, error) {
 
 func ToEvent[T any](s events.SQSMessage) (T, error) {
 
+	validator := validator.NewValidator()
+
 	var message T
 
 	if err := json.Unmarshal([]byte(s.Body), &message); err != nil {
 		return message, err
 	}
 
+	if err := validator.Validate(message); err != nil {
+		return message, err
+
+	}
 	return message, nil
 
 }
