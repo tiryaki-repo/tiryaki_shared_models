@@ -1,7 +1,9 @@
 package models
 
+type EmployeeTypeId int
+
 const (
-	Admin   = 1000
-	Manager = 2000
-	Staff   = 3000
+	Admin   EmployeeTypeId = EmployeeTypeId(1000)
+	Manager EmployeeTypeId = EmployeeTypeId(2000)
+	Staff   EmployeeTypeId = EmployeeTypeId(3000)
 )
