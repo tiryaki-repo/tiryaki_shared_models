@@ -5,8 +5,8 @@ import (
 )
 
 type UserUpdated struct {
-	UserId     uuid.UUID `json:"userId"`
-	GivenName  string    `json:"givenName"`
-	FamilyName string    `json:"familyName"`
+	UserId     uuid.UUID `json:"userId" validate:"required"`
+	GivenName  string    `json:"givenName" validate:"required"`
+	FamilyName string    `json:"familyName" validate:"required"`
 	Photo      *string   `json:"photo"`
 }

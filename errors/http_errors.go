@@ -20,6 +20,11 @@ var (
 		Status:  Status(http.StatusNotFound),
 		Message: http.StatusText(http.StatusNotFound),
 		Err:     fmt.Errorf(http.StatusText(http.StatusNotFound))}
+
+	ErrUnauthorized = HttpError{
+		Status:  Status(http.StatusUnauthorized),
+		Message: http.StatusText(http.StatusUnauthorized),
+		Err:     fmt.Errorf(http.StatusText(http.StatusUnauthorized))}
 )
 
 type Status int
