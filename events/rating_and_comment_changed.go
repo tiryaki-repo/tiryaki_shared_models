@@ -9,8 +9,8 @@ import (
 type RatingAndCommentStatus int
 
 const (
-	Deleted  RatingAndCommentStatus = 0
-	Inserted RatingAndCommentStatus = 1
+	RatingAndCommentDeleted  RatingAndCommentStatus = 0
+	RatingAndCommentInserted RatingAndCommentStatus = 1
 )
 
 type RatingAndCommentChanged struct {
